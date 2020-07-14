@@ -1,0 +1,13 @@
+{
+	"author": {
+		"name" : "Hossein Hosni",
+		"website" : "http://hosseinhosni.ir/"
+	},
+	"rtl": false,
+	"phrases":{
+		"sms.gateway.melipayamak" : "MeliPayamak",
+		"settings.sms.gateways.melipayamak.username": "Username",
+		"settings.sms.gateways.melipayamak.password": "Password",
+		"settings.melipayamak_smsgateway" : "MeliPayamak SMS Gateway settings"
+	}
+}

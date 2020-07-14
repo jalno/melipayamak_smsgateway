@@ -1,0 +1,25 @@
+{
+	"autoload": {
+		"files":[
+			{
+				"classes":["API"],
+				"file":"API.php"
+			},
+			{
+				"classes":["listeners/settings/SMS"],
+				"file":"listeners/settings/SMS.php"
+			}
+		]
+	},
+	"dependencies": ["base", "sms"],
+	"events": [
+		{
+			"name":"packages/sms/events/gateways",
+			"listener": "listeners/settings/SMS@gatewaysList"
+		}
+	],
+	"languages":{
+		"fa_IR" : "langs/fa_IR.json",
+		"en_US" : "langs/en_US.json"
+	}
+}
