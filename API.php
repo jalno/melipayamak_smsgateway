@@ -3,6 +3,7 @@ namespace packages\melipayamak_smsgateway;
 
 use packages\base\{Exception, Http, Json};
 use packages\sms\{Sent, Gateway};
+use function packages\base\utility\getTelephoneWithDialingCode;
 
 class API extends Gateway\Handler {
 
@@ -34,7 +35,7 @@ class API extends Gateway\Handler {
 					'UserName' => $this->username,
 					'PassWord' => $this->password,
 					'From' => $sms->sender_number->number,
-					'To' => $sms->receiver_number,
+					'To' => $this->convertReceiverNumber($sms->receiver_number),
 					'Text' => $sms->text,
 					'IsFlash' => false,
 				),
@@ -52,4 +53,14 @@ class API extends Gateway\Handler {
 		} catch (\Exception $e) {}
 		return Sent::failed;
 	}
+	/**
+     * @param string $number that is something like this: IR.9387654321
+     *
+     * @return string that is converted to this: 98.9387654321
+     */
+    protected function convertReceiverNumber(string $number): string
+    {
+        return getTelephoneWithDialingCode($number);
+    }
+
 }
